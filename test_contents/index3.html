@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compative" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NECST monitor</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+	<div class="navbar-header">
+	  <a class="navbar-brand" href="#">NECST monitor</a>
+	</div>
+      </div>
+    </nav>
+    <div class="container" style="padding-top:60px">
+      <div class="row">
+	<div class="col-md-4" id="read_status"></div>
+	<h2>Dvice Status</h2>
+	<table class="table table-striped">
+	  <tr><th>parameters</th><th>values</th></tr>
+	  <tr><td>Time</td><td id="Time"></td></tr>
+	  <tr><td>Limit</td><td id="Limit"></td></tr>
+	  <tr><td>Current_Az</td><td id="Current_Az"></td></tr>
+	  <tr><td>Current_El</td><td id="Current_El"></td></tr>
+	  <tr><td>Command_Az</td><td id="Command_Az"></td></tr>
+	  <tr><td>Commamd_El</td><td id="Command_El"></td></tr>
+	  <tr><td>Deviation_Az</td><td id="Deviation_Az"></td></tr>
+	  <tr><td>Deviation_El</td><td id="Deviation_El"></td></tr>
+	  <tr><td>Drive_ready_Az</td><td id="Drive_ready_Az"></td></tr>
+	  <tr><td>Drive_ready_El</td><td id="Drive_ready_El"></td></tr>
+	  <tr><td>Authority</td><td id="Authority"></td></tr>
+	  <tr><td>Emergency</td><td id="Emergency"></td></tr>
+	  <tr><td>Current_Dome</td><td id="Current_Dome"></td></tr>
+	  <tr><td>Door_Dome</td><td id="Door_Dome"></td></tr>
+	  <tr><td>Door_Membrane</td><td id="Door_Membrane"></td></tr>
+	  <tr><td>Door_Authority</td><td id="Door_Authority"></td></tr>
+	  <tr><td>Current_M4</td><td id="Current_M4"></td></tr>
+	  <tr><td>Current_Hot</td><td id="Current_Hot"></td></tr>
+	</table>
+	<h2>Weather status</h2>
+	<table class="table table-striped">
+	  <tr><th>parameters</th><th>values</th></tr>
+	  <tr><td>Year</td><td id="Year"></td></tr>
+	  <tr><td>Month</td><td id="Month"></td></tr>
+	  <tr><td>Day</td><td id="Day"></td></tr>
+	  <tr><td>Hour</td><td id="Hour"></td></tr>
+	  <tr><td>Min</td><td id="Min"></td></tr>
+	  <tr><td>Sec</td><td id="Sec"></td></tr>
+	  <tr><td>InTemp</td><td id="InTemp"></td></tr>
+	  <tr><td>OutTemp</td><td id="OutTemp"></td></tr>
+	  <tr><td>InHumi</td><td id="InHumi"></td></tr>
+	  <tr><td>OutHumi</td><td id="OutHumi"></td></tr>
+	  <tr><td>WindDir</td><td id="WindDir"></td></tr>
+	  <tr><td>WindSp</td><td id="WindSp"></td></tr>
+	  <tr><td>Press</td><td id="Press"></td></tr>
+	  <tr><td>Rain</td><td id="Rain"></td></tr>
+	  <tr><td>CabinTemp1</td><td id="CabinTemp1"></td></tr>
+	  <tr><td>CabinTemp2</td><td id="CabinTemp2"></td></tr>
+	  <tr><td>DomeTemp1</td><td id="DomeTemp1"></td></tr>
+	  <tr><td>DomeTemp2</td><td id="DomeTemp2"></td></tr>
+	  <tr><td>GenTemp1</td><td id="GenTemp1"></td></tr>
+	  <tr><td>GenTemp2</td><td id="GenTemp2"></td></tr>
+	  <tr><td>Current_M2</td><td id="Current_M2"></td></tr>
+	  <tr><td>MJD</td><td id="MJD"></td></tr>
+	  <tr><td>LST</td><td id="LST"></td></tr>
+	  <tr><td>Secofday</td><td id="Secofday"></td></tr>
+	  </table>
+      </div>
+      <div class="command">
+	<h2>Motors <button type="button" class="btn btn-danger" id="motor_on">ON</button>
+	  <button type="button" class="btn btn-primary" id="motor_off">OFF</button></h2>
+	<div id "touchmotion" class="well" style="width:300px;height:300px;cursor:pointer">
+	  <span id="vel_fw">0</span>[mm/s]&nbsp;<span id="vel_rot">0</span>[deg/s]
+	  </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eventemitter2@5.0.1/lib/eventemitter2.min.js"></script>
+    <script src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
+
+	
+

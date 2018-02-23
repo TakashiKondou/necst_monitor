@@ -1,0 +1,84 @@
+*  { padding : 0px ; margin : 0px ; }
+#site-box{
+	width : 752px;
+	border : 1px solid #FF9900;
+	margin : 5px auto;
+}
+
+#title-box{
+	color :	#ffffff;
+	font-size : 16px;
+	border-bottom : 1px solid #FF9900;
+	background-image : url('img/karin.png');
+	padding : 20px;
+}
+
+#title-box_okawa{
+        color : #ffff00;
+        font-size : 16px;
+	border-bottom : 1px solid #FF9900;
+	background-image : url('img/okawa.JPG');
+        padding : 20px;
+}
+
+#title-box_masahiro{
+	color : #cd853f;
+        font-size : 16px;
+	border-bottom : 1px solid #FF9900;
+	background-image : url('img/masahiro.JPG');
+        padding : 20px;
+}
+
+#start-box{
+	float: left;
+	width: 500px;
+	margin : 5px;
+}
+
+#main1{
+        float: right;
+        width: 235px;
+	font-size : 12px;
+	padding : 5px 5px 5px 0px;
+}
+
+#main2{
+        float: left;
+        width: 500px;
+	margin : 5px
+}
+
+#end-box{
+	clear : both;
+        margin : 5px;
+}
+
+
+#last-box{
+        clear : both;
+        width: 750px;
+	background-color : #f0e68c;
+}
+
+h2{
+	color : #ffc000;
+	padding : 10px;
+	margin : 5px;
+	background-color : #fff0f5;
+}
+
+/*
+.cate{
+	color : #FFFFFF;	
+	padding 5px;
+	margin : 0px 0px 0px 20px;
+}
+*/
+
+ul{
+	padding :  5px 0px 5px 50px;
+}
+
+h1{
+	font-size : 30px;
+}
