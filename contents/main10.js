@@ -13,9 +13,14 @@ var ls = new ROSLIB.Topic({
 ls.subscribe(function(message) {
     for( name in message){
 	if (typeof(message[name])=="number"){
-	    message_e=parseInt(message[name])}else{
-		message_e=message[name]
+	    if(String(message[name]).length > 5){
+		message_e=parseFloat(message[name]).toFixed(4)
+	    }else{
+		message_e=parseFloat(message[name])
 	    }
+	}else{
+	    message_e=message[name]
+	}
 	try{
 	    document.getElementById(name).innerHTML = message_e//message[e]
 	    if (name == "OutHumi"){
@@ -45,25 +50,43 @@ ls.subscribe(function(message) {
 var drive = new ROSLIB.Topic({
     ros : ros,
     name : "/antenna_drive",
-    messageType : "std_msgs/String"
+    messageType : "necst/String_necst"
 });
 
+var contactor = new ROSLIB.Topic({
+    ros : ros,
+    name : "/antenna_contactor",
+    messageType : "necst/String_necst"
+});
+    
 var hot = new ROSLIB.Topic({
     ros : ros,
     name : "/hot",
-    messageType : "std_msgs/String"
+    messageType : "necst/String_necst"
 });
 
 var m4 = new ROSLIB.Topic({
     ros : ros,
     name : "/m4",
-    messageType : "std_msgs/String"
+    messageType : "necst/String_necst"
 });
 
 var dome = new ROSLIB.Topic({
     ros : ros,
     name : "/dome_move",
     messageType : "necst/Dome_msg"
+});
+
+var antenna = new ROSLIB.Topic({
+    ros : ros,
+    name : "/onepoint_command",
+    messageType : "necst/Move_mode_msg"
+});
+
+var stop = new ROSLIB.Topic({
+    ros : ros,
+    name : "/move_stop",
+    messageType : "necst/Bool_necst"
 });
 
 function PubMotorValues(id){
@@ -73,18 +96,38 @@ function PubMotorValues(id){
     if (key == "drive"){	
 	msg = new ROSLIB.Message({data:String(value)});
 	drive.publish(msg);
+	contactor.publish(msg);
+	console.log(msg)
     }else if(key == "hot"){
 	msg = new ROSLIB.Message({data:String(value)});
 	hot.publish(msg);
+	console.log(msg)
     }else if(key == "m4"){
 	msg = new ROSLIB.Message({data:String(value)});
 	m4.publish(msg);
+	console.log(msg)
     }else if(key == "dome"||key=="memb"){
 	msg = new ROSLIB.Message({name:"command", value:String(id)});
 	dome.publish(msg);
+	console.log(msg)
+    }else if(key == "antenna"){
+	az = parseFloat(document.forms.form1.input_az.value)
+	el = parseFloat(document.forms.form1.input_el.value)
+	console.log(az,el)
+	ctime = Date.now()/1000
+	stop_flag = new ROSLIB.Message({data:Boolean(0), from_node:"web_GUI", timestamp:ctime})
+	stop.publish(stop_flag)	
+	msg = new ROSLIB.Message({x:az, y: el,coord:"horizontal", planet:"0", off_x:0, off_y:0, offcoord:"horizontal", hosei:"hosei_230.txt", lamda:2600, dcos:0, func_x:"0", func_y:"0", limit:Boolean(1), from_node:"web_GUI", timestamp:ctime});
+	antenna.publish(msg);
+	console.log(msg)
+    }else if(key == "emergency"){
+	msg = new ROSLIB.Message({data:"stop"});
+	stop.publish(msg);
+	console.log(msg)
     }else{
 	;}
     
+    /*color change*/
     if (value == "on"){ 
 	$("#"+key+"_on").attr("class", "btn btn-danger");    
 	$("#"+key+"_off").attr("class", "btn btn-default");
@@ -109,34 +152,6 @@ function PubMotorValues(id){
 };
 
 
-
-
-/*
-$("#motor_on").on("click", function(e){
-    Pubmotorvalues('on');
-    $("#motor_on").attr("class", "btn btn-danger");
-    $("#motor_off").attr("class", "btn btn-default");
-})
-
-$("#motor_off").on("click", function(e){
-    pubMotorValues("off");
-    $("#motor_on").attr("class", "btn btn-default");
-    $("#motor_off").attr("class", "btn btn-danger");
-});
-
-$("#hot_in").on("click", function(e){
-    pubHotValues('in');
-    $("#hot_in").attr("class", "btn btn-danger");
-    $("#hot_out").attr("class", "btn btn-default");
-})
-
-$("#hot_out").on("click", function(e){
-    pubHotValues("out");
-    $("#hot_in").attr("class", "btn btn-default");
-    $("#hot_out").attr("class", "btn btn-danger");
-});
-*/
-
 $(".btn").on("click", function(e){
     var id =  $(this).attr("id");
     PubMotorValues(id);
@@ -144,7 +159,14 @@ $(".btn").on("click", function(e){
 })
 
 
+    
 
 document.getElementById("camstream").data ="http://"
     +"192.168.101.153"
     +":10000/stream?topic=/cv_camera_node/image_raw" ;
+
+/*
+document.getElementById("camstream").data ="http://"
+    +"192.168.101.67"
+    +":10000/stream?topic=/cv_camera_node/image_raw" ;
+*/

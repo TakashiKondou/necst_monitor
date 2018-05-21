@@ -22,7 +22,7 @@
     <main>
       <div class="main-container" style="padding-top:60px">
 	<div class="column1" id="read_status">
-	  <h2>Dvice Status</h2>
+	  <h2>Device Status</h2>
 	  <table class="table table-striped">
 	    <tr><th>parameters</th><th>values</th><th>units</th></tr>
 	    <tr><td>Time</td><td id="Time"></td><td>[s]</td></tr>
@@ -71,11 +71,7 @@
 	    <tr><td>Secofday</td><td id="Secofday">[s]</td><td></td></tr>
 	  </table>
 	</div><!--column2-->
-	<div class="column3" id="camera">
-	  <h2>Camera</h2>
-	  <object id="camstream" style="width:300px;height:240px" ></object>
-	</div><!--column3-->
-	<div class="column4">
+	<div class="column3">
 	  <h2>Motors</h2>
 	  <table class="table motor">
 	    <p>drive&nbsp
@@ -98,19 +94,32 @@
 	      <button type="button" class="btn btn-on" id="hot_in">IN</button>
 	      <button type="button" class="btn btn-off" id="hot_out">OUT</button>
 	    </p>
-	    
-
-
-
-
-
-	  <!--
-	  <div id "touchmotion" class="well" style="width:300px;height:300px;cursor:pointer">
-	    <span id="vel_fw">0</span>[mm/s]&nbsp;<span id="vel_rot">0</span>[deg/s]
-	  </div>
-	  -->
 	  </table>
-	</div><!--column4-->
+	  <div class="column3_2">
+	    <h2 class="azel_text">Antenna controll</h2>
+	    <form action = "#",method="POST", id="form1">
+	      <p><label for="az">Az</label>
+		<input type="tel" name="az" id="input_az" autofocus required>
+	      </p>
+	      <p><label for="el">El</label>
+		<input type=" tel" name="el" id="input_el" required>
+	      </p>
+	      <p>
+		<button type="submit" class="btn btn-move" id="antenna_move">Move</button>
+	      </p>
+	    </form>
+	  </div><!--column3_2-->
+	</div><!--column3-->
+	<div class="wrap_45">
+	  <div class="column4" id="stop">
+	    <h2 class="stop_text">Emergency Stop</h2>
+	    <button type="button" class="btn btn-on" id="emergency_stop">STOP</button>
+	  </div><!--column4-->
+	  <div class="column5" id="camera">
+	    <h2>Camera</h2>
+	    <object id="camstream" style="width:300px;height:240px" ></object>
+	  </div><!--column5-->
+	</div><!--wrap_45-->
     </main>
     <footer>
       <div class="footer-container">

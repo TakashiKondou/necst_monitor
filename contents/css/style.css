@@ -48,8 +48,7 @@ button{
     color:ffff00;
 }
 
-.motor{
-}
+
 
 /* header */
 header{
@@ -131,7 +130,7 @@ main{}
     outline:1px solid#ffdead;
 }
 
-.column4{
+.column3{
     text-align:center;
     order:3;
     flex:1 1 180px;
@@ -141,16 +140,25 @@ main{}
     outline:1px solid #1e90ff;
 }
 
-.column3{
+.wrap_45{
     order:4;
     flex:0 0 180px;
     margin:0 20px 0 0;
-    padding:30px 0 30px 0;
+    padding:0 0 0 0;
     width:1200px;
 }
 
+.column4{
+    outline:1px solid#ff7f50;
+    margin:0 0 10px 0;
+    height:200px
+}
+
+.column5{
+    margin:10px 0 0 0;
+}
 
 
-
-
-
+.stop_text{
+    color:#ff0000;
+}
