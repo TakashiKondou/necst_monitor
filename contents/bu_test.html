@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compative" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NECST monitor</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+	<a href="#"><h1 class="header-logo">NECST Monitor</h1></a>
+      </div>
+    </header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="nav-container">
+	<a class="navbar-brand" href="#">NECST monitor</a>
+      </div>
+    </nav>
+    <main>
+      <div class="main-container" style="padding-top:60px">
+	<div class="column1" id="read_status">
+	  <h2>Device Status</h2>
+	  <div class="node_box" id= "node">
+	    <h3>Node Status</h3>
+	    <p id="NodeStatus"></p>
+	  </div>
+	  <div class="node_box" id="m2">
+	    <h3>m2</h3>
+	    <p>test</p>
+	  </div>
+	  <div class="node_box" id="m4">
+	    <h3>m4</h3>
+	    <p>test</p>
+	  </div>
+	  <div class="node_box" id="hot">
+	    <h3>hot</h3>
+	    <p>test</p>
+	  </div>
+	  <div class="node_box" id="encoder">
+	    <h3>AzEl</h3>
+	    <p id="Az"></p>
+	    <p id="El"></p>	    
+	  </div>
+	  <div class="node_box" id="wc_linear">
+	    <h3>drive</h3>
+	    <p>test</p>
+	  </div>
+	  <div class="node_box" id="drive">
+	    <h3>drive</h3>
+	    <p>test</p>
+	  </div>	  
+
+	</div><!--column1-->
+	<div class="column2" id="read_status2">
+	  <h2>Weather status</h2>
+	  <table class="table table-striped">
+	    <tr><th>parameters</th><th>values</th><th>units</th></tr>
+	    <tr><td>Today</td><td><a id="Year"></a>/<a id="Month"></a>/<a id="Day"></a></td><td></td></tr>
+	    <tr><td>Time</td><td><a id="Hour"></a>:<a id="Min"></a>:<a id="Sec"></a></td><td></td></tr>
+	    <tr><td>InTemp</td><td id="InTemp"></td><td>[&#8451]</td></tr>
+	    <tr><td>OutTemp</td><td id="OutTemp"></td><td>[&#8451]</td></tr>
+	    <tr><td>InHumi</td><td id="InHumi"></td><td>[%]</td></tr>
+	    <tr><td>OutHumi</td><td id="OutHumi"></td><td>[%]</td></tr>
+	    <tr><td>WindDir</td><td id="WindDir"></td><td>[deg]</td></tr>
+	    <tr><td>WindSp</td><td id="WindSp"></td><td>[m/s]</td></tr>
+	    <tr><td>Press</td><td id="Press"></td><td>[hPa]</td></tr>
+	    <tr><td>Rain</td><td id="Rain"></td><td>[ml]</td></tr>
+	    <tr><td>CabinTemp1</td><td id="CabinTemp1"></td><td>[&#8451]</td></tr>
+	    <tr><td>CabinTemp2</td><td id="CabinTemp2"></td><td>[&#8451]</td></tr>
+	    <tr><td>DomeTemp1</td><td id="DomeTemp1"></td><td>[&#8451]</td></tr>
+	    <tr><td>DomeTemp2</td><td id="DomeTemp2"></td><td>[&#8451]</td></tr>
+	    <tr><td>GenTemp1</td><td id="GenTemp1"></td><td>[&#8451]</td></tr>
+	    <tr><td>GenTemp2</td><td id="GenTemp2"></td><td>[&#8451]</td></tr>
+	    <tr><td>Current_M2</td><td id="Current_M2"></td><td>[um]</td></tr>
+	    <tr><td>MJD</td><td id="MJD"></td><td>[day]</td></tr>
+	    <tr><td>LST</td><td id="LST"></td><td>[s]</td></tr>
+	    <tr><td>Secofday</td><td id="Secofday">[s]</td><td></td></tr>
+	  </table>
+	</div><!--column2-->
+	<div class="column3">
+	  <h2>Motors</h2>
+	  <table class="table motor">
+	    <p>drive&nbsp
+	      <button type="button" class="btn btn-on" id="drive_on">ON</button>
+	      <button type="button" class="btn btn-off" id="drive_off">OFF</button>
+	    </p>
+	    <p>dome&nbsp
+	      <button type="button" class="btn btn-on" id="dome_open">OPEN</button>
+	      <button type="button" class="btn btn-off" id="dome_close">CLOSE</button>
+	    </p>
+	    <p>memb&nbsp
+	      <button type="button" class="btn btn-on" id="memb_open">OPEN</button>
+	      <button type="button" class="btn btn-off" id="memb_close">CLOSE</button>
+	    </p>	    
+	    <p>m4&nbsp
+	      <button type="button" class="btn btn-on" id="m4_in">IN</button>
+	      <button type="button" class="btn btn-off" id="m4_out">OUT</button>
+	    </p>
+	    <p>hot&nbsp
+	      <button type="button" class="btn btn-on" id="hot_in">IN</button>
+	      <button type="button" class="btn btn-off" id="hot_out">OUT</button>
+	    </p>
+	  </table>
+	  <div class="column3_2">
+	    <h2 class="azel_text">Antenna controll</h2>
+	    <form action = "#",method="POST", id="form1">
+	      <p><label for="az">Az</label>
+		<input type="tel" name="az" id="input_az" autofocus required>
+	      </p>
+	      <p><label for="el">El</label>
+		<input type=" tel" name="el" id="input_el" required>
+	      </p>
+	      <p>
+		<button type="submit" class="btn btn-move" id="antenna_move">Move</button>
+	      </p>
+	    </form>
+	  </div><!--column3_2-->
+	</div><!--column3-->
+	<div class="wrap_45">
+	  <div class="column4" id="stop">
+	    <h2 class="stop_text">Emergency Stop</h2>
+	    <button type="button" class="btn btn-on" id="emergency_stop">STOP</button>
+	  </div><!--column4-->
+	  <div class="column5" id="camera">
+	    <h2>Camera</h2>
+	    <object id="camstream" style="width:300px;height:240px" ></object>
+	  </div><!--column5-->
+	</div><!--wrap_45-->
+    </main>
+    <footer>
+      <div class="footer-container">
+	<p class="copyright">@NECST</p>
+      </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eventemitter2@5.0.1/lib/eventemitter2.min.js"></script>
+    <script src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
+
+	
+

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compative" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NECST monitor</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+      <!--
+      <div class="header-container">
+	<a href="#"><h1 class="header-logo">NECST Monitor</h1></a>
+      </div>
+      -->
+    </header>
+    <!--
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="nav-container">
+	<a class="navbar-brand" href="#">NECST monitor</a>
+      </div>
+    </nav>
+    -->
+    <main>
+      <div class="main-container">
+
+	
+	<div class="wrapper1" id="read_status">
+	  <div class="column11-main">
+	    <h1>NECST Monitor</h1>
+	  </div><!--column11-->
+	  <div class="column11-time">
+	    <a> Current User</a>
+	  </div>	  	    
+	  
+
+	  <div class="column12-title">	    	  
+	    <h3>Weather Status</h3>
+	  </div>	  	    
+	  <div class="column12-main">
+	    <li class="node_box">
+	      <a>InTemp</a><br>
+	      <a id="InTemp">aaaaaaa</a>
+	    </li>
+	    <li class="node_box">
+	      <a>OutTemp</a>
+	      <a id="OutTemp"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>InHumi</a>
+	      <a id="InHumi"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>OutHumi</a>
+	      <a id="OutHumi"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>WindDir</a>
+	      <a id="WindDir"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>WindSp</a>
+	      <a id="WindSp"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>Press</a>
+	      <a id="Press"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>Rain</a>
+	      <a id="Rain"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>CabinTemp1</a>
+	      <a id="CabinTemp1"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>CabinTemp2</a>
+	      <a id="CabinTemp2"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>DomeTemp1</a>
+	      <a id="DomeTemp1"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>DomeTemp2</a>
+	      <a id="DomeTemp2"></a>
+	    </li>
+	    <li class="node_box">
+	      <a>Secofday</a>
+	      <a id="Secofday"></a>
+	    </li>
+	    <div class="propaty">
+	      <li style="background-color:#ff0000;"> emergency</li>
+	      <li style="background-color:#ff0000;"> emergency</li>
+	      <li style="background-color:#ff0000;"> emergency</li>
+	      <li style="background-color:#ff0000;"> emergency</li>	      
+	    </div>
+	    </li>	    	    	    
+	    
+	  </div><!--column12-->
+
+	  <div class="column13-title">	  
+	    <h3>Device Status</h3>
+	  </div>	  	    	  
+	  <div class="column13-main">
+	    <li>
+              <div class="node_box" id="m2_controller">
+		<a>m2</a>
+		<a id="CurrentM2"></a>
+              </div>
+	    </li>
+	    <li>
+              <div class="node_box" id="m4_controller">
+		<a>m4</a>
+		<a id="CurrentM4"></a>
+              </div>
+	    </li>
+	    <li>
+              <div class="node_box" id="abs_controller">
+		<a>hot</a>
+		<a id="CurrentHot"></a>
+              </div>
+	    </li>
+	    <li>
+              <div class="node_box" id="encoder_status">
+		<a>AzEl</a>
+		<!--
+		<table class="table table-striped">
+		  <tr><td>Az</td><td><a id="Az"></a><td>[deg]</td></tr>
+		  <tr><td>El</td><td><a id="El"></a><td>[deg]</td></tr>
+		</table>
+		-->
+              </div>
+	    </li>
+	    <li>
+              <div class="node_box" id="authority_status">
+		<a>Drive</a>
+		<!--
+		<table class="table table-striped">
+		  <tr><td>Authority</td><td><a id="Authority"></a></tr>
+		  <tr><td>Az</td><td><a id="DriveReadyAz"></a></tr>
+		  <tr><td>El</td><td><a id="DriveReadyEl"></a></tr>
+		</table>
+		-->
+              </div>
+	    </li>
+	    <li>
+              <div class="node_box" id="dome_status">
+		<a>Dome</a>
+		<table class="table table-striped">
+		  <!--
+		  <tr><td>position</td><td><a id="CurrentDome"></a><td>[deg]</td></tr>
+		  <tr><td>dome</td><td><a id="DoorDome"></a><td></td></tr>
+		  <tr><td>membrane</td><td><a id="DoorMembrane"><td></td></a></tr>
+		  -->
+		</table>
+	      </div>
+	    </li>
+	  </div><!--column13-->
+	</div><!--wrapper1-->
+	
+	
+	<div class="wrapper2" id="read_status2">
+	  <div class="column21-title">	    	  
+	    <h3>Observation</h3>
+	  </div>	  	    
+	  <div class="column21-main">
+	    <p>
+	      <label>obs_script</label>
+	      select
+	      start
+	    </p>
+	  </div><!--column21-->
+
+	  <div class="column22-title">	    	  
+	    <h3>Main Control</h3>
+	  </div>	  	    
+	  <div class="column22-main">
+	    <div class="column22-main-sub1">
+	      <li>
+	      </li>
+	      <li>
+		Az
+	      </li>
+	      <li>
+		El
+	      </li>
+	      <li>
+		Current
+	      </li>
+	      <li>
+		-92.234
+	      </li>
+	      <li>
+		65.091
+	      </li>
+	      <li>
+		Command
+	      </li>
+	      <li>
+		-92.234
+	      </li>
+	      <li>
+		65.091
+	      </li>
+	      <li>
+		Deviation
+	      </li>
+	      <li>
+		0.0
+	      </li>
+	      <li>
+		0.0
+	      </li>	      
+	    </div>
+	    <div class="column22-main-sub2">
+	      <p>
+		Drive_Readdy_Az : <a>on</a>
+		Drive_Readdy_El : <a>on</a>	
+	      </p>
+	      <label for="mode">coordinate</label>
+              <select name="obsmode"  id="mode">
+		<option value="altaz"selected>altaz(horizontal)</option>
+		<option value="fk5">fk5(j2000)</option>
+		<option value="fk4">fk4(b1950)</option>
+		<option value="galactic">galactic</option>
+		<option value="gcrs">gcrs</option>
+		<option value="cirs">cirs</option>
+              </select>	      
+	      <form action = "#",method="POST", id="form1">
+		<p>
+		  <label for="az">Az : </label>
+                  <input type="tel" name="az" id="input_az" autofocus required>
+		  <label for="el">El : </label>
+                  <input type=" tel" name="el" id="input_el" required>
+                  <button type="submit" class="btn btn-move" id="antenna_move">Move</button>
+		</p>
+              </form>
+              <form action = "#",method="POST", id="form2">
+		<p>
+		  <label for="mode">planet : </label>
+		  <select name="obsmode"  id="planet">
+                    <option value="no"selected>no select</option>
+                    <option value="sun">sun</option>
+                    <option value="mercury">mercury</option>
+                    <option value="venus">venus</option>
+                    <option value="mars">mars</option>
+                    <option value="jupiter">jupiter</option>
+                    <option value="saturn">saturn</option>
+                    <option value="uranus">uranus</option>
+                    <option value="neptune">neptune</option>
+		  </select>
+                  <button type="submit" class="btn btn-move" id="planet_move">Move</button>
+		</p>
+              </form>	      
+	    </div>
+	    	    
+	    <div class="column22-main-sub3">
+              <form action = "#",method="POST", id="form0">
+		<p>
+		  <label>Authority1 : </label>
+		  <a>LOCAL</a>
+		  <label>Authority2 : </label>
+		  <a>controller0</a>		  
+		</p>
+		<p>
+                  <button type="submit" class="btn btn-move" id="authority_release">Release Authority</button>
+                  <button type="submit" class="btn btn-move" id="authority_get">Get Authority</button>
+		</p>
+              </form>
+	    </div>
+	    <div class="column22-main-sub4">
+	      <!--<h3>Motors</h3>-->
+              <p>drive&nbsp
+		<button type="button" class="btn btn-on" id="drive_on">ON</button>
+		<button type="button" class="btn btn-off" id="drive_off">OFF</button>
+              </p>
+	      <p>
+		Current Dome : <a>~~~</a> [deg]
+		<a class="no_track">tracking</a>
+	      </p>
+	      <p>
+		Door_Dome : <a>OPEN</a>
+		Door_Membrane : <a>CLOSE</a>
+	      </p>
+              <p>dome&nbsp
+		<button type="button" class="btn btn-on" id="dome_OPEN">OPEN</button>
+		<button type="button" class="btn btn-off" id="dome_CLOSE">CLOSE</button>
+              </p>
+              <p>memb&nbsp
+		<button type="button" class="btn btn-on" id="memb_OPEN">OPEN</button>
+		<button type="button" class="btn btn-off" id="memb_CLOSE">CLOSE</button>
+              </p>
+	      <p>
+		Current_M2 : <a></a>[um]
+		Current_M4 : <a>SMART</a>
+	      </p>
+              <p>m2&nbsp
+		<button type="button" class="btn btn-on" id="m2_move">IN</button>
+		<button type="button" class="btn btn-off" id="m2_move">OUT</button>
+              </p>
+              <p>m4&nbsp
+		<button type="button" class="btn btn-on" id="m4_IN">IN</button>
+		<button type="button" class="btn btn-off" id="m4_OUT">OUT</button>
+              </p>	      
+	      <p>
+		Current_Hot : <a>in</a>
+	      </p>
+              <p>hot&nbsp
+		<button type="button" class="btn btn-on" id="hot_IN">IN</button>
+		<button type="button" class="btn btn-off" id="hot_OUT">OUT</button>
+              </p>
+	    </div>	    
+	  </div><!--column22-->	  
+	</div><!--wrapper2-->
+
+
+	<div class="wrapper3">
+	  <div class="column31-main">
+	    <div class="column31-main-sub1">
+	      <p>Stop</p>
+	    </div>
+	    <div class="column31-main-sub2">
+	      <li>UTC : 2018/06/11 04:00:00</li>
+	      <li>LST </li>
+	    </div>	    	    
+	  </div><!--column31-->
+	  <div class="column32-title">	    	  
+	    <h3>Receiver</h3>
+	  </div>	  	    
+	  <div class="column32-main">
+	    <div class="column32-main-sub1">
+	      <div class="column32-main-sub1-up-left">		
+		<h3>Thermometer</h3>
+	      </div>	      	      
+	      <div class="column32-main-sub1-up-right">
+		<h4>
+		  vacuum ratio : <a></a>
+		</h4>
+	      </div>
+	      <div class="column32-main-sub1-down-left">
+		<h3>T-t monitor</h3>
+	      </div>
+	      <div class="column32-main-sub1-down-right">
+		<li>
+		  ~~K
+		</li>
+	      </div>	      	      
+	    </div>
+	    <div class="column32-main-sub2">
+	      <h3>SIS</h3>
+	      <div class="column32-main-sub2-left">
+		<table class="table SIS">
+		  <tr><th></th><th> I </th><th> V </th></tr>
+		  <tr><td>1-RU</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>1-RL</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>1-LU</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>1-LL</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>2-RU</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>2-LU</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>3-RU</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>3-LU</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>4-RU</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>4-LU</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>5-RU</td><td id="">~~~</td><td>~~~</td></tr>
+		  <tr><td>5-LU</td><td id="">~~~</td><td>~~~</td></tr>
+		</table>
+	      </div>
+	      <div class="column32-main-sub2-right">
+		<li>
+		  V-t
+		</li>
+		<li>
+		  I-t
+		</li>
+	      </div>
+	    </div>
+	    <div class="column32-main-sub3">
+	      <h3>XFFTS</h3>
+	      <div class="column32-main-sub3_1">
+		<a>SPEC</a>
+		<li>graph</li>
+	      </div>
+	      <div class="column32-main-sub3_2">
+		<a>CONTI</a>
+		<li>graph</li>
+	      </div>
+	      <div class="column32-main-sub3_3">
+		<a>TEMP</a>
+		<li>graph</li>
+	      </div>
+		    
+	    </div>
+	    
+	  </div><!--column32-->
+	  <div class="column33-title">	    	  
+	    <h3>Camera Monitor</h3>
+	  </div>	  	    
+	  <div class="column33-main">
+	    <p>Antenna@under dome</p>
+	    <object id="camstream" style="width:300px;height:240px" ></object>
+	  </div><!--column33-->	  	  
+
+	</div><!--wrapper3-->
+
+	
+    </main>
+    <!--
+    <footer>
+      <div class="footer-container">
+	<p class="copyright">@NECST</p>
+      </div>
+    </footer>
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eventemitter2@5.0.1/lib/eventemitter2.min.js"></script>
+    <script src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+    <!--<script src="main.js"></script>-->
+  </body>
+</html>
+
+	
+

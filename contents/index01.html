@@ -35,8 +35,8 @@
 	    <tr><td>Deviation_El</td><td id="Deviation_El"></td><td>[deg]</td></tr>
 	    <tr><td>Drive_ready_Az</td><td id="Drive_ready_Az"></td><td></td></tr>
 	    <tr><td>Drive_ready_El</td><td id="Drive_ready_El"></td><td></td></tr>
-	    <tr><td>Authority</td><td id="Authority"></td><td></td></tr>
-	    <tr><td>Emergency</td><td id="Emergency"></td><td></td></tr>
+	    <tr><td>Authority1</td><td id="Authority"></td><td></td></tr>
+	    <tr><td>Authority2</td><td id="Authority2"></td><td></td></tr>		    <tr><td>Emergency</td><td id="Emergency"></td><td></td></tr>
 	    <tr><td>Current_Dome</td><td id="Current_Dome"></td><td>[deg]</td></tr>
 	    <tr><td>Door_Dome</td><td id="Door_Dome"></td><td></td></tr>
 	    <tr><td>Door_Membrane</td><td id="Door_Membrane"></td><td></td></tr>
@@ -97,6 +97,24 @@
 	  </table>
 	  <div class="column3_2">
 	    <h2 class="azel_text">Antenna controll</h2>
+
+	    <form action = "#",method="POST", id="form0">
+	      <p>
+		<button type="submit" class="btn btn-move" id="authority_release">Release Authority</button>
+	      </p>
+	      <p>
+		<button type="submit" class="btn btn-move" id="authority_get">Get Authority</button>
+	      </p>	      
+	    </form>
+	    <label for="mode">coordinate</label><br>
+	    <select name="obsmode"  id="mode">
+	      <option value="altaz"selected>altaz(horizontal)</option>
+	      <option value="fk5">fk5(j2000)</option>
+	      <option value="fk4">fk4(b1950)</option>
+	      <option value="galactic">galactic</option>
+	      <option value="gcrs">gcrs</option>
+	      <option value="cirs">cirs</option>
+	    </select>
 	    <form action = "#",method="POST", id="form1">
 	      <p><label for="az">Az</label>
 		<input type="tel" name="az" id="input_az" autofocus required>
@@ -108,8 +126,42 @@
 		<button type="submit" class="btn btn-move" id="antenna_move">Move</button>
 	      </p>
 	    </form>
+	    <form action = "#",method="POST", id="form2">	    
+	      <label for="mode">planet</label><br>
+	      <select name="obsmode"  id="planet">
+		<option value="no"selected>no select</option>
+		<option value="sun">sun</option>
+		<option value="mercury">mercury</option>
+		<option value="venus">venus</option>
+		<option value="mars">mars</option>
+		<option value="jupiter">jupiter</option>
+		<option value="saturn">saturn</option>
+		<option value="uranus">uranus</option>	
+		<option value="neptune">neptune</option>
+	      </select>
+	      <p>
+		<button type="submit" class="btn btn-move" id="planet_move">Move</button>
+	      </p>
+	    </form>
 	  </div><!--column3_2-->
 	</div><!--column3-->
+	<div class="column6">
+	  <h2 class="obs_script">observation</h2>
+	  <form action = "#",method="POST", id="form3">	    
+	    <label for="mode">obs_script</label><br>
+	    <select name="obsmode"  id="filename">
+	      <option value="no"selected>no select</option>	    
+	      <optgroup label="position switching" id="ps">
+		<option value="ps_OriKL.obs">ps_OriKl.obs</option>
+	      </optgroup>
+	      <optgroup label="OTF_scan" id="otf">
+		<option value="line_otf_OriKL.obs">line_otf_OriKL.obs</option>
+	      </optgroup>
+	    </select>
+	    <button type="submit" class="btn btn-move" id="obsfile_move">start observation</button>
+	  </form>
+	</div>
+	  
 	<div class="wrap_45">
 	  <div class="column4" id="stop">
 	    <h2 class="stop_text">Emergency Stop</h2>
