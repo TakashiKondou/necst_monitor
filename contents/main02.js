@@ -16,6 +16,18 @@ var auth = new ROSLIB.Topic({
     messageType : "necst/String_necst"
 });
 
+var dometrack = new ROSLIB.Topic({
+    ros : ros,
+    name : "/dome_track_flag",
+    messageType : "necst/Bool_necst",
+});
+
+var node = new ROSLIB.Topic({
+    ros:ros,
+    name:"/web_topic",
+    messageType:"necst/Status_node_msg"
+});
+
 /*
 var ondo = new ROSLIB.Topic({
     ros : ros,
@@ -25,30 +37,53 @@ var ondo = new ROSLIB.Topic({
 */
 
 ls.subscribe(function(message) {
+    var dt = new Date()
+    utc = dt.getUTCFullYear().toString()+"/"
+	+(dt.getUTCMonth()+1).toString()+"/"
+	+(dt.getUTCDate()).toString()+" "
+	+dt.getUTCHours().toString()+":"
+	+dt.getUTCMinutes().toString()+":"
+	+dt.getUTCSeconds().toString()+" "
+    document.getElementById("UTC").innerHTML = utc;
     for( name in message){
 	if (name=="Current_Az"||name=="Current_El"){
 	    message_e=parseFloat(message[name]).toFixed(3)
 	}else if (name=="Command_Az"||name=="Command_El"){
 	    message_e=parseFloat(message[name]).toFixed(3)
+	}else if (name=="Current_Dome"){
+	    message_e=parseFloat(message[name]).toFixed(2)	    
 	}else if (typeof(message[name])=="number"){
-	    message_e=parseFloat(message[name]).toFixed(0)}else{
-		message_e=message[name]
-	    }
+	    message_e=parseFloat(message[name]).toFixed(2)}
+	else{
+	    message_e=message[name]
+	}
 	try{
+	    if(name=="Current_M4"){
+		if(message_e=="IN"){
+		    message_e = "NAGOYA"
+		}else if(message_e=="OUT"){
+		    message_e = "SMART"
+		}else{};
+	    }else if(name=="LST"){
+		lst_h = parseInt(message_e/3600);
+		lst_m = parseInt((message_e%3600)/60);
+		lst_s = (message_e%3600)%60;
+		message_e = lst_h.toString()+":"+lst_m.toString()+":"+lst_s.toString();
+	    }else{}
 	    if(name=="OutTemp"||name=="OutHumi"){
-		;
 	    }else{
+		$("#"+name+"_box").attr("class", "node_box_blue")		
 		document.getElementById(name).innerHTML = message_e;//message[name];
 	    }
 	    if(name == "WindSp"){
 		if (message_e > 20){
-		    $("#WindSp").attr("class", "emergency")}else if(message_e > 15){
-			$("#WindSp").attr("class", "warning")}else{
-			    $("#WindSp").attr("class", "nomal")
+		    $("#WindSp_box").attr("class", "node_box_red")}else if(message_e > 15){
+			$("#WindSp_box").attr("class", "node_box_yellow")}else{
+			    $("#WindSp_box").attr("class", "node_box_blue")
 			}
 	    }else if (name == "Rain"){
 		if (message_e > 5){
-		    $("#Rain").attr("class", "warning")}else{
+		    $("#Rain_box").attr("class", "node_box_yellow")}else{
 		    }
 	    }else{
 	    }
@@ -57,6 +92,21 @@ ls.subscribe(function(message) {
 	}
     }
 });
+
+node.subscribe(function(message){
+    msg = message["from_node"].toString();
+    data = message["active"]
+    //console.log("msg, data : ", msg,data)
+    if (data==true){
+	document.getElementById(msg);
+	$("#"+msg).attr("class", "node_box_blue")
+    }else if(data==false){
+	$("#"+msg).attr("class", "node_box_red")
+    }else{
+	console.log("error")
+    }
+});
+
 
 /*
 ondo.subscribe(function(key){
@@ -84,6 +134,10 @@ ondo.subscribe(function(key){
 
 auth.subscribe(function(message) {
     document.getElementById("Authority2").innerHTML = message.data
+});
+
+dometrack.subscribe(function(message){
+    document.getElementById("Dome_Track").innerHTML = message.data;
 });
 
 var drive = new ROSLIB.Topic({
@@ -118,10 +172,23 @@ var m4 = new ROSLIB.Topic({
     messageType : "necst/String_necst"
 });
 
+var m2 = new ROSLIB.Topic({
+    ros : ros,
+    name : "/WebM2",
+    messageType : "necst/Float64_necst"
+});
+
+
 var dome = new ROSLIB.Topic({
     ros : ros,
     name : "/WebDome",
     messageType : "necst/String_necst"
+});
+
+var domemove = new ROSLIB.Topic({
+    ros : ros,
+    name : "/WebDomeMove",
+    messageType : "necst/Float64_necst"
 });
 
 var memb = new ROSLIB.Topic({
@@ -171,9 +238,22 @@ function PubMotorValues(id){
     }else if(key == "m4"){
 	msg = new ROSLIB.Message({data:String(value)});
 	m4.publish(msg);
+    }else if(key == "m2"){
+	value=parseFloat(document.forms.form4.input_m2.value);
+	console.log(value)
+	msg = new ROSLIB.Message({data:value});
+	m2.publish(msg);	
     }else if(key == "dome"){
-	msg = new ROSLIB.Message({data:String(value)});
-	dome.publish(msg);
+	if(value=="move"){
+	    value=parseFloat(document.forms.form3.input_dome.value);
+	    console.log(value)
+	    msg = new ROSLIB.Message({data:value});
+	    domemove.publish(msg);
+	    console.log(msg);
+	}else{
+	    msg = new ROSLIB.Message({data:String(value)});
+	    dome.publish(msg);	    
+	}
 	console.log("ok")
     }else if(key == "memb"){
 	msg = new ROSLIB.Message({data:String(value)});
@@ -224,52 +304,28 @@ function PubMotorValues(id){
     }else if(value == "off"){
 	$("#"+key+"_off").attr("class", "btn btn-danger");
 	$("#"+key+"_on").attr("class", "btn btn-default");
-    }else if (value=="in"){
-	$("#"+key+"_in").attr("class", "btn btn-danger");
-	$("#"+key+"_out").attr("class", "btn btn-default");
-    }else if(value=="out"){
-	$("#"+key+"_out").attr("class", "btn btn-danger");
-	$("#"+key+"_in").attr("class", "btn btn-default");
-    }else if(value=="open"){
-	$("#"+key+"_open").attr("class", "btn btn-danger");
-	$("#"+key+"_close").attr("class", "btn btn-default");
-    }else if(value=="close"){
-	$("#"+key+"_close").attr("class", "btn btn-danger");
-	$("#"+key+"_open").attr("class", "btn btn-default");
+    }else if (value=="IN"){
+	$("#"+key+"_IN").attr("class", "btn btn-danger");
+	$("#"+key+"_OUT").attr("class", "btn btn-default");
+    }else if(value=="OUT"){
+	$("#"+key+"_OUT").attr("class", "btn btn-danger");
+	$("#"+key+"_IN").attr("class", "btn btn-default");
+    }else if(value=="OPEN"){
+	$("#"+key+"_OPEN").attr("class", "btn btn-danger");
+	$("#"+key+"_CLOSE").attr("class", "btn btn-default");
+    }else if(value=="CLOSE"){
+	$("#"+key+"_CLOSE").attr("class", "btn btn-danger");
+	$("#"+key+"_OPEN").attr("class", "btn btn-default");
+    }else if(value=="tracking"){
+	$("#"+key+"_tracking").attr("class", "btn btn-danger");
+	$("#"+key+"_trackend").attr("class", "btn btn-default");
+    }else if(value=="trackend"){
+	$("#"+key+"_trackend").attr("class", "btn btn-danger");
+	$("#"+key+"_tracking").attr("class", "btn btn-default");	
     }else{}
 
     console.log("msg",msg)
 };
-
-
-
-/*
-
-$("#motor_on").on("click", function(e){
-    Pubmotorvalues('on');
-    $("#motor_on").attr("class", "btn btn-danger");
-    $("#motor_off").attr("class", "btn btn-default");
-})
-
-$("#motor_off").on("click", function(e){
-    pubMotorValues("off");
-    $("#motor_on").attr("class", "btn btn-default");
-    $("#motor_off").attr("class", "btn btn-danger");
-});
-
-$("#hot_in").on("click", function(e){
-    pubHotValues('in');
-    $("#hot_in").attr("class", "btn btn-danger");
-    $("#hot_out").attr("class", "btn btn-default");
-})
-
-$("#hot_out").on("click", function(e){
-    pubHotValues("out");
-    $("#hot_in").attr("class", "btn btn-default");
-    $("#hot_out").attr("class", "btn btn-danger");
-});
-*/
-
 
 $(".btn").on("click", function(e){
     var id =  $(this).attr("id");

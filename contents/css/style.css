@@ -86,18 +86,26 @@ button{
 
 .node_box_blue{
     text-align:center;
-    margin:10px 20px 10px 20px;
+    margin:0px 0px 0px 0px;
     padding:10px 0 10px 0;
     outline:1px solid #1e90ff;
-    background-color:#afeeee;
+    background-color:#caedc9;
 }
 
 .node_box_red{
     text-align:center;
-    margin:10px 20px 10px 20px;
+    /*margin:10px 20px 10px 20px;*/
     padding:10px 0 10px 0;
     outline:1px solid #1e90ff;
-    background-color:#fa8072;
+    background-color:#e5bcc2;
+}
+
+.node_box_yellow{
+    text-align:center;
+    /*margin:10px 20px 10px 20px;*/
+    padding:10px 0 10px 0;
+    outline:1px solid #1e90ff;
+    background-color:#edecc4;
 }
 
 /* header */
@@ -229,7 +237,7 @@ main{}
     float:left;
     margin:10px 0px 0px 10px;
     width:120px;
-    height:30px;
+    height:23.5px;
     border:1px solid #b3e0ba;    
 }
 
@@ -238,7 +246,7 @@ main{}
     margin:10px 10px 0px 10px;
     width:120px;
     height:50px;
-    border:1px solid #000000;
+    border:1px solid #b3e0ba;
     overflow:hidden;
     list-style:none;        
 }
@@ -246,7 +254,8 @@ main{}
 .propaty li{
     margin:2px 0px 0px 2px;
     width:54px;
-    height:22px;
+    height:21px;
+    border:1px solid #000000;    
 }
 
 /*device*/
@@ -279,6 +288,24 @@ main{}
     width:55px;
     border:1px solid #c7d3ed;
 }
+
+.propaty2{
+    float:right;
+    margin:10px 10px 0px 10px;
+    width:120px;
+    height:50px;
+    border:1px solid #b3e0ba;
+    overflow:hidden;
+    list-style:none;        
+}
+
+.propaty2 li{
+    margin:2px 0px 0px 2px;
+    width:54px;
+    height:21px;
+    border:1px solid #000000;    
+}
+
 
 /*obs_script*/
     
@@ -611,48 +638,6 @@ main{}
     background:#fffff0;
 }
 
-
-
-
-
-
-
-
-.Node_box{
-    text-align:center;
-    order:3;
-    flex:1 1 30px;
-    margin:10px 20px 10px 20px;
-    padding:10px 0 10px 0;
-    width:150px;
-    height:50px
-    outline:1px solid #1e90ff;
-    background-color:#c0c0c0;
-}
-
-.node_box_blue{
-    text-align:center;
-    order:3;
-    flex:1 1 30px;
-    margin:10px 20px 10px 20px;
-    padding:10px 0 10px 0;
-    width:150px;
-    height:50px
-    outline:1px solid #1e90ff;
-    background-color:#afeeee;
-}
-
-.node_box_red{
-    text-align:center;
-    order:3;
-    flex:1 1 30px;
-    margin:10px 20px 10px 20px;
-    padding:10px 0 10px 0;
-    width:150px;
-    height:50px;
-    outline:1px solid #1e90ff;
-    background-color:#fa8072;
-}
 
 /*camera*/
 .camera{

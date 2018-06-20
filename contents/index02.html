@@ -40,65 +40,72 @@
 	    <h3>Weather Status</h3>
 	  </div>	  	    
 	  <div class="column12-main">
-	    <li class="node_box">
+	    <li class="node_box" id="InTemp_box">
 	      <a>InTemp</a><br>
-	      <a id="InTemp">aaaaaaa</a>
+	      <a id="InTemp"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>OutTemp</a>
+	    <li class="node_box" id="OutTemp_box">
+	      <a>OutTemp</a></br>
 	      <a id="OutTemp"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>InHumi</a>
+	    <li class="node_box" id="InHumi_box">
+	      <a>InHumi</a></br>
 	      <a id="InHumi"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>OutHumi</a>
+	    <li class="node_box" id="OutHumi_box">
+	      <a>OutHumi</a></br>
 	      <a id="OutHumi"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>WindDir</a>
+	    <li class="node_box" id="WindDir_box">
+	      <a>WindDir</a></br>
 	      <a id="WindDir"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>WindSp</a>
+	    <li class="node_box" id="WindSp_box">
+	      <a>WindSp</a></br>
 	      <a id="WindSp"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>Press</a>
+	    <li class="node_box" id="Press_box">
+	      <a>Press</a></br>
 	      <a id="Press"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>Rain</a>
+	    <li class="node_box" id="Rain_box">
+	      <a>Rain</a></br>
 	      <a id="Rain"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>CabinTemp1</a>
+	    <li class="node_box" id="CabinTemp1_box">
+	      <a>CabinTemp1</a></br>
 	      <a id="CabinTemp1"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>CabinTemp2</a>
+	    <li class="node_box" id="CabinTemp2_box">
+	      <a>CabinTemp2</a></br>
 	      <a id="CabinTemp2"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>DomeTemp1</a>
+	    <li class="node_box" id="DomeTemp1_box">
+	      <a>DomeTemp1</a></br>
 	      <a id="DomeTemp1"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>DomeTemp2</a>
+	    <li class="node_box" id="DomeTemp2_box">
+	      <a>DomeTemp2</a></br>
 	      <a id="DomeTemp2"></a>
 	    </li>
-	    <li class="node_box">
-	      <a>Secofday</a>
+	    <li class="node_box" id="GenTemp1_box">
+	      <a>GenTemp1</a></br>
+	      <a id="GenTemp1"></a>
+	    </li>
+	    <li class="node_box" id="GenTemp2_box">
+	      <a>GenTemp2</a></br>
+	      <a id="GenTemp2"></a>
+	    </li>	    
+	    <li class="node_box" id="Secofday_box">
+	      <a>Secofday</a></br>
 	      <a id="Secofday"></a>
 	    </li>
 	    <div class="propaty">
-	      <li style="background-color:#ff0000;"> emergency</li>
-	      <li style="background-color:#ff0000;"> emergency</li>
-	      <li style="background-color:#ff0000;"> emergency</li>
-	      <li style="background-color:#ff0000;"> emergency</li>	      
-	    </div>
-	    </li>	    	    	    
+	      <li style="background-color:#caedc9;"> normal</li>
+	      <li style="background-color:#edecc4;"> warn</li>
+	      <li style="background-color:#e5bcc2;"> error</li>
+	      <li style="background-color:#dcdcdc;"> no data</li>	      
+	    </div>	    	    	    
 	    
 	  </div><!--column12-->
 
@@ -127,38 +134,35 @@
 	    <li>
               <div class="node_box" id="encoder_status">
 		<a>AzEl</a>
-		<!--
-		<table class="table table-striped">
-		  <tr><td>Az</td><td><a id="Az"></a><td>[deg]</td></tr>
-		  <tr><td>El</td><td><a id="El"></a><td>[deg]</td></tr>
-		</table>
-		-->
               </div>
 	    </li>
 	    <li>
-              <div class="node_box" id="authority_status">
+              <div class="node_box" id="authority_check">
+		<a>Authority</a>
+              </div>
+	    </li>
+	    <li>
+              <div class="node_box" id="drive">
 		<a>Drive</a>
-		<!--
-		<table class="table table-striped">
-		  <tr><td>Authority</td><td><a id="Authority"></a></tr>
-		  <tr><td>Az</td><td><a id="DriveReadyAz"></a></tr>
-		  <tr><td>El</td><td><a id="DriveReadyEl"></a></tr>
-		</table>
-		-->
               </div>
 	    </li>
+	    
 	    <li>
-              <div class="node_box" id="dome_status">
+              <div class="node_box" id="dome">
 		<a>Dome</a>
-		<table class="table table-striped">
-		  <!--
-		  <tr><td>position</td><td><a id="CurrentDome"></a><td>[deg]</td></tr>
-		  <tr><td>dome</td><td><a id="DoorDome"></a><td></td></tr>
-		  <tr><td>membrane</td><td><a id="DoorMembrane"><td></td></a></tr>
-		  -->
-		</table>
 	      </div>
 	    </li>
+            <li>
+              <div class="node_box" id="NodeStatus">
+            </li>
+            <li>
+              <div class="node_box" id="worldcoordinate_linear">
+            </li>
+	    <div class="propaty2">
+	      <li style="background-color:#caedc9;"> normal</li>
+	      <li style="background-color:#e5bcc2;"> error</li>
+	      <li style="background-color:#dcdcdc;"> no data</li>	      
+	    </div>
 	  </div><!--column13-->
 	</div><!--wrapper1-->
 	
@@ -192,35 +196,42 @@
 		Current
 	      </li>
 	      <li>
-		-92.234
+		<a id="Current_Az">no data</a>
 	      </li>
 	      <li>
-		65.091
+		<a id="Current_El">no data</a>		
 	      </li>
 	      <li>
 		Command
 	      </li>
 	      <li>
-		-92.234
+		<a id="Command_Az">no data</a>
 	      </li>
 	      <li>
-		65.091
+		<a id="Command_El">no data</a>
 	      </li>
 	      <li>
 		Deviation
 	      </li>
 	      <li>
-		0.0
+		<a id="Deviation_Az">no data</a>
 	      </li>
 	      <li>
-		0.0
+		<a id="Deviation_El">no data</a>
 	      </li>	      
 	    </div>
 	    <div class="column22-main-sub2">
+              <p>drive&nbsp
+		<button type="button" class="btn btn-on" id="drive_on">ON</button>
+		<button type="button" class="btn btn-off" id="drive_off">OFF</button>
+		Currnt_Drive : <a id="Drive_ready_El">no data</a>
+              </p>
+	      <!--
 	      <p>
-		Drive_Readdy_Az : <a>on</a>
-		Drive_Readdy_El : <a>on</a>	
+		Drive_Ready_Az : <a id="Drive_Ready_Az">no data</a>
+		Drive_Ready_El : <a id="Drive_Ready_El">no data</a>	
 	      </p>
+	      -->
 	      <label for="mode">coordinate</label>
               <select name="obsmode"  id="mode">
 		<option value="altaz"selected>altaz(horizontal)</option>
@@ -262,9 +273,9 @@
               <form action = "#",method="POST", id="form0">
 		<p>
 		  <label>Authority1 : </label>
-		  <a>LOCAL</a>
+		  <a id="Authority">no data</a>
 		  <label>Authority2 : </label>
-		  <a>controller0</a>		  
+		  <a id="Authority2">no data</a>		  
 		</p>
 		<p>
                   <button type="submit" class="btn btn-move" id="authority_release">Release Authority</button>
@@ -274,40 +285,49 @@
 	    </div>
 	    <div class="column22-main-sub4">
 	      <!--<h3>Motors</h3>-->
-              <p>drive&nbsp
-		<button type="button" class="btn btn-on" id="drive_on">ON</button>
-		<button type="button" class="btn btn-off" id="drive_off">OFF</button>
-              </p>
 	      <p>
-		Current Dome : <a>~~~</a> [deg]
-		<a class="no_track">tracking</a>
+		Current Dome : <a id="Current_Dome">no data</a> [deg]
+		tracking : <a id="Dome_Track">no data</a>
+	      </p>
+	      <form action = "#",method="POST", id="form3">	      
+		<p>
+		  <label for="az">Dome_Az : </label>
+                  <input type="tel" name="dome" id="input_dome" required>
+                  <button type="submit" class="btn btn-move" id="dome_move">Move</button>
+		</p>
+	      </form>
+	      <p>dome tracking
+		<button type="button" class="btn btn-on" id="dome_tracking">True</button>
+		<button type="button" class="btn btn-off" id="dome_trackend">False</button>
 	      </p>
 	      <p>
-		Door_Dome : <a>OPEN</a>
-		Door_Membrane : <a>CLOSE</a>
+		Door_Dome : <a id="Door_Dome">no data</a>
+		Door_Membrane : <a id="Door_Membrane">no data</a>
 	      </p>
               <p>dome&nbsp
 		<button type="button" class="btn btn-on" id="dome_OPEN">OPEN</button>
 		<button type="button" class="btn btn-off" id="dome_CLOSE">CLOSE</button>
-              </p>
-              <p>memb&nbsp
+		memb&nbsp
 		<button type="button" class="btn btn-on" id="memb_OPEN">OPEN</button>
 		<button type="button" class="btn btn-off" id="memb_CLOSE">CLOSE</button>
               </p>
 	      <p>
-		Current_M2 : <a></a>[um]
-		Current_M4 : <a>SMART</a>
+		Current_M2 : <a id="Current_M2">no data</a>[um]
+		Current_M4 : <a id="Current_M4">no data</a>
 	      </p>
-              <p>m2&nbsp
-		<button type="button" class="btn btn-on" id="m2_move">IN</button>
-		<button type="button" class="btn btn-off" id="m2_move">OUT</button>
-              </p>
+	      <form action = "#",method="POST", id="form4">	      
+		<p>
+		  <label for="az">m2 : </label>
+                  <input type="tel" name="az" id="input_m2" required>
+                  <button type="submit" class="btn btn-move" id="m2_move">Move</button>
+		</p>
+	      </form>		
               <p>m4&nbsp
 		<button type="button" class="btn btn-on" id="m4_IN">IN</button>
 		<button type="button" class="btn btn-off" id="m4_OUT">OUT</button>
               </p>	      
 	      <p>
-		Current_Hot : <a>in</a>
+		Current_Hot : <a id="Current_Hot"></a>
 	      </p>
               <p>hot&nbsp
 		<button type="button" class="btn btn-on" id="hot_IN">IN</button>
@@ -321,11 +341,11 @@
 	<div class="wrapper3">
 	  <div class="column31-main">
 	    <div class="column31-main-sub1">
-	      <p>Stop</p>
+              <button type="submit" class="btn btn-move" id="move_stop_">Stop</button>	      
 	    </div>
 	    <div class="column31-main-sub2">
-	      <li>UTC : 2018/06/11 04:00:00</li>
-	      <li>LST </li>
+	      <li>UTC : <a id="UTC"></a></li>
+	      <li>LST : <a id="LST"></a></li>
 	    </div>	    	    
 	  </div><!--column31-->
 	  <div class="column32-title">	    	  
@@ -400,8 +420,9 @@
 	    <h3>Camera Monitor</h3>
 	  </div>	  	    
 	  <div class="column33-main">
-	    <p>Antenna@under dome</p>
-	    <object id="camstream" style="width:300px;height:240px" ></object>
+	    <a>Antenna@under dome</a></br>
+	    <object id="camstream" style="width:300px;height:130px" ></object>
+	    <!--Max : 300px :240px-->
 	  </div><!--column33-->	  	  
 
 	</div><!--wrapper3-->
@@ -418,7 +439,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/eventemitter2@5.0.1/lib/eventemitter2.min.js"></script>
     <script src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
-    <!--<script src="main.js"></script>-->
+    <script src="main.js"></script>
   </body>
 </html>
 
