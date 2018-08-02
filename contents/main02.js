@@ -36,6 +36,19 @@ var ondo = new ROSLIB.Topic({
 });
 */
 
+var ondoondo = new ROSLIB.Topic({
+    ros : ros,
+    name : "/web_ondo",
+    messageType : "necst/l218_values"
+});
+
+var tpgtpg = new ROSLIB.Topic({
+    ros : ros,
+    name : "/web_tpg",
+    messageType : "necst/tpg261_values"
+});
+
+
 ls.subscribe(function(message) {
     var dt = new Date()
     utc = dt.getUTCFullYear().toString()+"/"
@@ -130,7 +143,33 @@ ondo.subscribe(function(key){
 	}
     }
 });
-*/			    
+*/
+
+ondoondo.subscribe(function(key){
+    console.log(key)
+    for( name in key){
+	try{
+	    if (name == "ch1_value"){
+		document.getElementById(name).innerHTML = key[name].toFixed(5);
+	    }else{
+		document.getElementById(name).innerHTML = key[name].toFixed(5);		
+	    }
+	}catch(e){
+	}
+    }
+});
+
+tpgtpg.subscribe(function(key){
+    console.log(key)
+    for( name in key){
+	try{
+	    document.getElementById("vacuum").innerHTML = key[name].toFixed(5);
+	}catch(e){
+	}
+    }
+});    
+  
+  
 
 auth.subscribe(function(message) {
     document.getElementById("Authority2").innerHTML = message.data
@@ -224,42 +263,43 @@ var auth = new ROSLIB.Topic({
 function PubMotorValues(id){
     var key = id.split("_")[0]
     var value = id.split("_")[1]
-
+    var dt = new Date()
+    
     if (key == "drive"){
-	msg = new ROSLIB.Message({data:String(value)});
+	msg = new ROSLIB.Message({data:String(value),from_node:"web",timestamp:dt.getSeconds()});
 	drive.publish(msg);
 	//contactor.publish(msg);
     }else if(key == "emergency"){
-	msg = new ROSLIB.Message({data:String(value)});
+	msg = new ROSLIB.Message({data:String(value),from_node:"web",timestamp:dt.getSeconds()});
 	emergency.publish(msg);	
     }else if(key == "hot"){
-	msg = new ROSLIB.Message({data:String(value)});
+	msg = new ROSLIB.Message({data:String(value),from_node:"web",timestamp:dt.getSeconds()});
 	hot.publish(msg);
     }else if(key == "m4"){
-	msg = new ROSLIB.Message({data:String(value)});
+	msg = new ROSLIB.Message({data:String(value),from_node:"web",timestamp:dt.getSeconds()});
 	m4.publish(msg);
     }else if(key == "m2"){
 	value=parseFloat(document.forms.form4.input_m2.value);
 	console.log(value)
-	msg = new ROSLIB.Message({data:value});
+	msg = new ROSLIB.Message({data:value,from_node:"web",timestamp:dt.getSeconds()});
 	m2.publish(msg);	
     }else if(key == "dome"){
 	if(value=="move"){
 	    value=parseFloat(document.forms.form3.input_dome.value);
 	    console.log(value)
-	    msg = new ROSLIB.Message({data:value});
+	    msg = new ROSLIB.Message({data:value,from_node:"web",timestamp:dt.getSeconds()});
 	    domemove.publish(msg);
 	    console.log(msg);
 	}else{
-	    msg = new ROSLIB.Message({data:String(value)});
+	    msg = new ROSLIB.Message({data:String(value),from_node:"web",timestamp:dt.getSeconds()});
 	    dome.publish(msg);	    
 	}
 	console.log("ok")
     }else if(key == "memb"){
-	msg = new ROSLIB.Message({data:String(value)});
+	msg = new ROSLIB.Message({data:String(value),from_node:"web",timestamp:dt.getSeconds()});
 	memb.publish(msg);	
     }else if (key == "authority"){
-	msg = new ROSLIB.Message({data:String(value)});
+	msg = new ROSLIB.Message({data:String(value),from_node:"web",timestamp:dt.getSeconds()});
 	auth.publish(msg);
     }else if(key == "antenna"){
 	az = parseFloat(document.forms.form1.input_az.value);

@@ -109,6 +109,12 @@
 	    
 	  </div><!--column12-->
 
+          <div class="column14-main">
+            <div class="weather_box">
+              <a>weather graph</a>
+            </div>
+          </div>
+
 	  <div class="column13-title">	  
 	    <h3>Device Status</h3>
 	  </div>	  	    	  
@@ -153,10 +159,10 @@
 	      </div>
 	    </li>
             <li>
-              <div class="node_box" id="NodeStatus">
+              <div class="node_box" id="NodeStatus"></div>
             </li>
             <li>
-              <div class="node_box" id="worldcoordinate_linear">
+              <div class="node_box" id="worldcoordinate_linear"></div>
             </li>
 	    <div class="propaty2">
 	      <li style="background-color:#caedc9;"> normal</li>
@@ -168,9 +174,10 @@
 	
 	
 	<div class="wrapper2" id="read_status2">
+	  <!--
 	  <div class="column21-title">	    	  
 	    <h3>Observation</h3>
-	  </div>	  	    
+	  </div>
 	  <div class="column21-main">
 	    <p>
 	      <label>obs_script</label>
@@ -358,7 +365,7 @@
 	      </div>	      	      
 	      <div class="column32-main-sub1-up-right">
 		<h4>
-		  vacuum ratio : <a></a>
+		  vacuum ratio : <a id="vacuum"></a><a></a>
 		</h4>
 	      </div>
 	      <div class="column32-main-sub1-down-left">
@@ -366,7 +373,14 @@
 	      </div>
 	      <div class="column32-main-sub1-down-right">
 		<li>
-		  ~~K
+		  <a id="ch1_value" style="border-bottom:solid 3px #dcd45c; font-size:15px">no data</a><a> [K]</a>
+		  <a id="ch2_value" style="border-bottom:solid 3px #f5f528; font-size:15px">no data</a><a> [K]</a>	<br>
+		  <a id="ch3_value" style="border-bottom:solid 3px #45dte9; font-size:15px">no data</a><a> [K]</a>
+		  <a id="ch4_value" style="border-bottom:solid 3px #abcdef; font-size:15px">no data</a><a> [K]</a>	<br>
+		  <a id="ch5_value" style="border-bottom:solid 3px #23dd55; font-size:15px">no data</a><a> [K]</a>
+		  <a id="ch6_value" style="border-bottom:solid 3px #48bcac; font-size:15px">no data</a><a> [K]</a>	<br>
+		  <a id="ch7_value" style="border-bottom:solid 3px #34bcaa; font-size:15px">no data</a><a> [K]</a>
+		  <a id="ch8_value" style="border-bottom:solid 3px #d5bec8; font-size:15px">no data</a><a> [K]</a>	<br>	  		  
 		</li>
 	      </div>	      	      
 	    </div>
@@ -421,7 +435,7 @@
 	  </div>	  	    
 	  <div class="column33-main">
 	    <a>Antenna@under dome</a></br>
-	    <object id="camstream" style="width:300px;height:130px" ></object>
+	    <object id="camstream" style="width:300px;height:105px" ></object>
 	    <!--Max : 300px :240px-->
 	  </div><!--column33-->	  	  
 
