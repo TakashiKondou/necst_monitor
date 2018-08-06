@@ -424,7 +424,7 @@ for (i=0;i < cl.length;i++){
 var queue = new ROSLIB.Topic({
     ros : ros,
     name : "/web_queue",
-    messageType : "necst/Bool_necst"
+    messageType : "necst/String_necst"
 });
 
 function writefunction(id){
@@ -435,11 +435,7 @@ function writefunction(id){
     
     if (key=="queue"){
 	console.log(value)
-	if (value=="start"){
-	    msg = new ROSLIB.Message({data:true, from_node:"web", timestamp:now});
-	}else if(value=="stop"){
-	    msg = new ROSLIB.Message({data:false, from_node:"web", timestamp:now});
-	}else{}
+	msg = new ROSLIB.Message({data:value, from_node:"web", timestamp:now});
 	queue.publish(msg)
     }else{};
 };
